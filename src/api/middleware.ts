@@ -1,7 +1,7 @@
 import type {Request, Response, NextFunction} from 'express';
 import {config} from '../config.js';
 
-export async function middlewareLogResponses(req: Request, res: Response, next: NextFunction) {
+export function middlewareLogResponses(req: Request, res: Response, next: NextFunction) {
     res.on("finish", ()=> {
         const status = res.statusCode;
         if (status >= 400) {
