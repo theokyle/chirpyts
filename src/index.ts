@@ -4,6 +4,7 @@ import { middlewareLogResponses, middlewareMetricsInc } from "./api/middleware.j
 import { handlerMetrics } from "./api/metrics.js";
 import { handlerReset } from "./api/reset.js";
 import { handlerValidateChirp } from "./api/validateChirp.js";
+import { handlerCreateUser } from "./api/createUser.js";
 import { errorHandler } from "./api/errorhandler.js";
 import postgres from "postgres";
 import { migrate} from "drizzle-orm/postgres-js/migrator";
@@ -24,7 +25,8 @@ app.get("/api/healthz", handlerReadiness);
 app.get("/admin/metrics", handlerMetrics);
 
 app.post("/admin/reset", handlerReset);
-app.post("/api/validate_chirp", handlerValidateChirp)
+app.post("/api/validate_chirp", handlerValidateChirp);
+app.post("/api/users", handlerCreateUser);
 
 app.use(errorHandler);
 
